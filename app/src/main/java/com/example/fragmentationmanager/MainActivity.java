@@ -11,37 +11,15 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    Button btn1,btn2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        btn1=findViewById(R.id.btnFirst);
-        btn2=findViewById(R.id.btnSecond);
-
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Fragment fragment = new Fragment_one(); // Change to your Fragment_one class
-                FragmentManager manager = getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                transaction.replace(R.id.fragmentContainer, fragment);
-                transaction.commit();
-            }
-        });
-
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Fragment fragment = new Fragment_two(); // Change to your Fragment_two class
-                FragmentManager manager = getSupportFragmentManager();
-                FragmentTransaction transaction = manager.beginTransaction();
-                transaction.replace(R.id.fragmentContainer, fragment);
-                transaction.commit();
-            }
-        });
+        // Add the InputFragment as the initial fragment
+        getSupportFragmentManager().beginTransaction()
+                .add(R.id.fragmentContainer, new Fragment_one())
+                .commit();
 
     }
 }
